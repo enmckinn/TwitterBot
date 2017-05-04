@@ -1,7 +1,7 @@
 var twit = require('twit');
-var config = require('.config.js');
+var config = require('./config.js');
 
-var Twitter = new twit('config');
+var Twitter = new twit(config);
 
 var retweet =  function () {
   var params = {
@@ -17,18 +17,18 @@ var retweet =  function () {
       //tell to retweet
       Twitter.post('statuses/retweet/:id', {
         id: retweetId
-      }, function(err response){
+      }, function(err, response){
         if (response) {
-          console.log("Retweeted!!");
+          console.log('Retweeted!!');
         }
         if (err) {
-          console.log("Something went wrong while Retweeting");
+          console.log('Something went wrong while Retweeting');
         }
       });
     }
     // if unable to search
     else {
-      console.log("Something went wrong while Searching");
+      console.log('Something went wrong while Searching');
     }
   });
 }
